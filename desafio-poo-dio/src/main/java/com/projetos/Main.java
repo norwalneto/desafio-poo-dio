@@ -1,8 +1,6 @@
 package com.projetos;
 
-import com.projetos.dominio.Conteudo;
-import com.projetos.dominio.Curso;
-import com.projetos.dominio.Mentoria;
+import com.projetos.dominio.*;
 
 import java.time.format.DateTimeFormatter;
 
@@ -40,6 +38,21 @@ public class Main {
                         ", data=" + mentoria.getData().format(formatter) +
                         '}'
         );
+
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descrição do Bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso);
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devAlice = new Dev();
+        devAlice.setNome("Alice");
+        devAlice.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos Alice: " + devAlice.getConteudosInscritos());
+        devAlice.progredir();
+        devAlice.progredir();
+        System.out.println("Conteúdos Concluídos Alice: " + devAlice.getConteudosConcluidos());
+        System.out.println("XP Total Alice: " + devAlice.calcularTotalXp());
 
 
     }
